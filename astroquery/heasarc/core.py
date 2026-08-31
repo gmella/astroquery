@@ -708,7 +708,7 @@ class HeasarcClass(BaseVOQuery, BaseQuery):
         # include rows that have directory links (i.e. data) and those
         # that report errors (usually means there are no data products)
         dl_result = dl_result[np.ma.mask_or(
-            dl_result['content_type'] == 'directory',
+            dl_result['content_type'].contains('directory'),
             dl_result['error_message'] != '',
             shrink=False
         )]
